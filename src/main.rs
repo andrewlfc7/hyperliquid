@@ -1,17 +1,15 @@
-
 mod api;
 mod utils;
 
-use crate::api::client::{ApiClient};
-use crate::api::client_struct::CandleRequest;
+    use crate::api::client_struct::CandleRequest;
 use crate::api::response_structs::CandlesSnapshotResponse;
 use crate::utils::outer::to_timestamp_millis;
 use std::collections::HashMap;
+use crate::api::client::ApiClient;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let base_url = "https://api.hyperliquid.xyz";
-    let client = ApiClient::new(base_url);
+    let client = ApiClient::new();
 
     let coin = "BTC";
     let interval = "1d";
@@ -29,8 +27,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         req,
     };
 
-    let candles: Vec<CandlesSnapshotResponse> = client.request("info", &candle_request).await?;
-
+    let candles: Vec<CandlesSnapshotResponse> = client.post("info", &candle_request).await?;
     for candle in candles {
         println!("{:?}", candle);
     }
