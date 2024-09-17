@@ -1,7 +1,7 @@
 mod api;
 mod utils;
 
-    use crate::api::client_struct::CandleRequest;
+use crate::api::client_struct::CandleRequest;
 use crate::api::response_structs::CandlesSnapshotResponse;
 use crate::utils::outer::to_timestamp_millis;
 use std::collections::HashMap;
@@ -31,6 +31,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     for candle in candles {
         println!("{:?}", candle);
     }
+
+
 
     Ok(())
 }
