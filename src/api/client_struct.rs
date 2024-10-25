@@ -9,3 +9,10 @@ pub struct CandleRequest {
     pub req: HashMap<String, serde_json::Value>,
 }
 
+
+#[derive(Serialize)]
+pub struct L2BookRequest {
+    #[serde(rename = "type")]
+    pub request_type: String,
+    pub coin: String
+}

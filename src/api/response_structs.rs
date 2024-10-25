@@ -24,3 +24,5 @@ pub struct CandlesSnapshotResponse {
     #[serde(rename = "n")]
     pub num_trades: u64,
 }
+
+
